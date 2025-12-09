@@ -1,0 +1,19 @@
+#https://www.datacamp.com/tutorial/running-mongodb-in-docker
+
+# Define all containers
+services:
+    mongodb: #name of Sertvice
+        image: mongodb/mongodb-community-server:latest # Docker image || name of the image 
+        container_name: mongodb # The acualt name of the conatainer
+        restart: unless-stopped #Restart policy
+        ports: # Map port || Keep same port 
+            - "27017:27017" # PORT number
+        volumes:
+            - mongodb:/data/db # Persistant Database
+        #environment:
+            #MONGO_INITDB_ROOT_USERNAME: nraboy
+            #MONGO_INITDB_ROOT_PASSWORD: password1234
+
+volumes: # Persistant Database
+    mongodb:
+        external: true # Use new DB insted of same

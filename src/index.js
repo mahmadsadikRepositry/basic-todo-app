@@ -4,12 +4,16 @@ import express from "express";
 import cors from "cors";
 //Db config
 import { connectDb } from "./config/db.js";
+//API routes
+import todoRouter from "./routes/todoRoutes.js";
 
 // Create new express Application instance
 const app = express();
 
 //To allow cross communication
 app.use(cors());
+
+app.use("/api/todos", todoRouter);
 
 //Enable JSON
 app.use(express.json());

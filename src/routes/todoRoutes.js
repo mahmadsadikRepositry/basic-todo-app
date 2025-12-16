@@ -15,4 +15,14 @@ todoRouter.post("/", async (req, res) => {
   }
 });
 
+//Create A new Task
+todoRouter.get("/", async (req, res) => {
+  try {
+    const todo = await Todo.find();
+    res.status(200).json(todo); // 200 Success response
+  } catch (error) {
+    res.status(400).json({ erro: error });
+  }
+});
+
 export default todoRouter;
